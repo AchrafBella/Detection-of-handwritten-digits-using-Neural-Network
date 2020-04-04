@@ -37,6 +37,12 @@ def sigmoid(x, derive):
     else:
         return 1/(1+np.exp(-x))
     
+def intergral_sigmoid(x, derive):
+    if(derive == True):
+        return sigmoid(x)
+    else:
+        return np.ln(1+np.exp(x))
+    
 #nueral network 
 class Neural_network():
     def __init__(self, inputNode, hiddenNode, outputNode, activation, trainning_rate):
