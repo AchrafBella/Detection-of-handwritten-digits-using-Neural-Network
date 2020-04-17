@@ -26,13 +26,15 @@ class Neural():
         #list of error 
         self.liste_error = []
         
-    def fit(self, x_train, y_train, epochs):
+    def fit(self, x_train, y_train, epochs,dropOut = False, dropOut_rate = 0):
         x_train = np.array(x_train, ndmin=2)
         y_train = np.array(y_train, ndmin=2)
         
         for e in range(epochs):
             input_layer  = x_train
             hidden_layer = self.activation_function(np.dot(input_layer, self.weights1 ))
+            if(dropOut):
+                hidden_layer *= np.random.binomial([np.ones((len(input_layer),self.hidden_nodes))],1-dropOut_rate)[0] * (1.0/(dropOut_rate))
             output_layer = self.activation_function(np.dot(hidden_layer, self.weights2))
             
             error         = y_train - output_layer
@@ -52,11 +54,20 @@ class Neural():
         output_layer = self.activation_function(np.dot(hidden_layer, self.weights2))
         return output_layer
     
-    def plot_Neural_error(self):
-        plt.plot(self.liste_error)
-        plt.xlabel(" generation")
-        plt.ylabel(" error ")
+    def plot_Neural_error(self, alpha):
+        EvolutionAlpha = plt.figure("The mean error")
+        
+        ax = EvolutionAlpha.add_subplot(1, 1, 1)
+        ax.plot(self.liste_error, label = "alpha:"+str(alpha) )
+        
+        ax.set_xlabel(" generation")
+        ax.set_ylabel(" error ")
+        ax.set_title(' the mean error with different value of alpha ')
+        
+        ax.grid(True, linestyle='-.')
+        ax.legend()
         plt.show()
+        
         pass
         
 
@@ -115,6 +126,23 @@ class Neural_pro():
         hidden_layer2 = self.activation_function(np.dot(hidden_layer1, self.weights2))
         output_layer  = self.activation_function(np.dot(hidden_layer2, self.weights3))
         return output_layer
+    
+    def plot_Neural_error(self, alpha):
+        EvolutionAlpha = plt.figure("The mean error")
+        
+        ax = EvolutionAlpha.add_subplot(1, 1, 1)
+        ax.plot(self.liste_error, label = "alpha:"+str(alpha) )
+        
+        ax.set_xlabel(" generation")
+        ax.set_ylabel(" error ")
+        ax.set_title('the mean error with different value of alpha ')
+        
+        ax.grid(True, linestyle='-.')
+        ax.legend()
+        plt.show()
+        
+        pass
+
             
 
     
