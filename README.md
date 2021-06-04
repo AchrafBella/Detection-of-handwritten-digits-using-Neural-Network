@@ -1,9 +1,23 @@
 # Detection-of-handwritten-digits-using-Neural-Network
 
-École Centrale de Lyon
+Detection of handwritten digits using neural network
+==========================
 
-S8 UE ECL A-11 Algorithmes collaboratifs 2019-2020
+École Centrale de Lyon - S8 UE ECL A-11 Algorithmes collaboratifs 2019-2020
 
-Using a given data set similair to mnist to a model implemented using Python from scratch to detect handwritten digits
+During the elective: Collaborative Algorithms and Applications we had the opportunity to dig deep in neural networks by dismantle each part of the neural network from forward propagation to the backpropagation using gradient descent also to experiment some new comcepts like activation function, the impact of learning rate and Weight initialization.
 
-report : https://www.overleaf.com/project/5e8712e27016db000108dcc9
+
+Datasets:
+---------------
+During this project we had 2 different dataset the famous one is mnist and the second one is not far from mnist but instead of coding pixels into 64*64 array 
+
+Models:
+---------------
+
+
+Report:
+---------------
+acces to the report : https://www.overleaf.com/project/5e8712e27016db000108dcc9
+
+
